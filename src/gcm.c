@@ -222,7 +222,7 @@ static int pack_gcm(FILE *f, const char *dirname, bool is_tgc, uint32_t start_of
     char path[PATH_MAX];
     uint8_t *gcm_header = malloc(GCM_HEADER_SIZE);
     if(!gcm_header){
-        fprintf(stderr,"Could not allocate %ld bytes for gcm header\n",GCM_HEADER_SIZE);
+        fprintf(stderr,"Could not allocate %d bytes for gcm header\n",GCM_HEADER_SIZE);
         return 0;
     }
 
@@ -278,7 +278,7 @@ static int pack_gcm(FILE *f, const char *dirname, bool is_tgc, uint32_t start_of
     if (is_tgc) {
         uint8_t *tgc_header = malloc(TGC_HEADER_SIZE);
         if(!tgc_header){
-            fprintf(stderr,"Could not allocate %ld bytes for tgc header\n",TGC_HEADER_SIZE);
+            fprintf(stderr,"Could not allocate %d bytes for tgc header\n",TGC_HEADER_SIZE);
             free(gcm_header);
             fst_destroy(&fst);
             return 0;
@@ -489,7 +489,7 @@ static int extract_gcm(FILE *f, const char *dirname, uint32_t gcm_offset, uint32
     uint32_t apploader_header_size = 0x20;
     uint8_t *apploader_header = malloc(apploader_header_size);
     if(!apploader_header){
-        fprintf(stderr,"Could not allocate %ld bytes for apploader header\n",apploader_header_size);
+        fprintf(stderr,"Could not allocate %d bytes for apploader header\n",apploader_header_size);
         return 0;
     }
 
@@ -511,7 +511,7 @@ static int extract_gcm(FILE *f, const char *dirname, uint32_t gcm_offset, uint32
     uint32_t dol_header_size = sizeof(dol_hdr_t);
     uint8_t *dol_header = malloc(dol_header_size);
     if(!dol_header){
-        fprintf(stderr,"Could not allocate %ld bytes for dol header\n",dol_header_size);
+        fprintf(stderr,"Could not allocate %d bytes for dol header\n",dol_header_size);
         return 0;
     }
 
@@ -534,7 +534,7 @@ static int extract_gcm(FILE *f, const char *dirname, uint32_t gcm_offset, uint32
 
     uint8_t *fst = malloc(fst_size);
     if(!fst){
-        fprintf(stderr,"Could not allocate %ld bytes for fst\n",fst_size);
+        fprintf(stderr,"Could not allocate %d bytes for fst\n",fst_size);
         return 0;
     }
 
@@ -561,7 +561,7 @@ static int extract_tgc(FILE *f, const char *dirname, uint32_t tgc_offset) {
     uint32_t tgc_header_size = 0x38;
     uint8_t *tgc_header = malloc(tgc_header_size);
     if(!tgc_header){
-        fprintf(stderr,"Could not allocate %ld bytes for tgc header\n",tgc_header_size);
+        fprintf(stderr,"Could not allocate %d bytes for tgc header\n",tgc_header_size);
         return 0;
     }
 
@@ -610,7 +610,7 @@ int extract_gcm_archive(const char *input, const char *outdir) {
 
     uint8_t *data = (uint8_t*)malloc(GCM_HEADER_SIZE);
     if(!data){
-        fprintf(stderr,"Could not allocate %ld bytes for iso header\n",GCM_HEADER_SIZE);
+        fprintf(stderr,"Could not allocate %d bytes for iso header\n",GCM_HEADER_SIZE);
         fclose(isofile);
         return 0;
     }

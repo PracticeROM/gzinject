@@ -1,0 +1,48 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            name: "ubuntu"
+            extension: ""
+          - os: windows-latest
+            name: "windows"
+            extension: ".exe"
+          - os: macos-latest
+            name: "macos"
+            extension: ""
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository (shallow clone)
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        submodules: recursive
+
+    # Set Git config
+    - name: Git config
+      run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+    # Build the project
+    - name: Build
+      run: ./configure && make
+
+    # Upload the binary if we're on the main branch
+    - name: Upload artifact
+      if: ${{ github.ref == 'refs/heads/main' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.name }}_gzinject
+        path: ./gzinject${{ matrix.extension }}

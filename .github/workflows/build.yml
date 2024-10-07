@@ -6,18 +6,21 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.platform }}
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            name: "ubuntu"
+          - platform: ubuntu-latest
+            name: linux-x86_64
             extension: ""
-          - os: windows-latest
-            name: "windows"
+          - platform: windows-latest
+            name: windows-x86_64
             extension: ".exe"
-          - os: macos-latest
-            name: "macos"
+          - platform: macos-latest
+            name: macos-arm64
+            extension: ""
+          - platform: macos-13
+            name: macos-x86_64
             extension: ""
     defaults:
       run:
@@ -44,5 +47,5 @@ jobs:
       if: ${{ github.ref == 'refs/heads/main' }}
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.name }}_gzinject
+        name: gzinject_${{ matrix.name }}
         path: ./gzinject${{ matrix.extension }}

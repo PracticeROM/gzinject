@@ -76,7 +76,7 @@ Sizes:
 
 ## Thanks/Authors
 
-gzinject was primarily written by KrimtonZ (https://github.com/krimtonz) \
+gzinject was primarily written by KrimtonZ (https://github.com/krimtonz/gzinject) \
 Thanks to glankk (https://github.com/glankk) for providing memory/controller fixes for OOT as well as debugging, testing, and providing fixes for various errors \
 The general workflow of extracting/packing the wad was taken from showmiiwads (https://github.com/dnasdw/showmiiwads/) \
 AES encryption/decryption was taken from kokke (https://github.com/kokke/tiny-AES-c) \

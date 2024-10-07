@@ -48,7 +48,7 @@ Options:
   -p, --patch-file=patchfile   gzi file to use for applying patches (default: none)
   -c, --content=contentfile    the primary wii content file (default: 5)
   --dol-inject                 Binary data to inject into the emulator program, requires --dol-loading
-  --iso-dol-path               For gamecube isos, path to the dol file inside the iso
+  --dol-iso-path               For gamecube isos, path to the dol file inside the iso
   --dol-loading                The loading address for the binary specified by --dol-inject
   --dol-after                  After which patch file to inject the dol, default: after all patches
 ```

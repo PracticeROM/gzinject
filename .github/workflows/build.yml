@@ -39,9 +39,9 @@ jobs:
     - name: Build
       run: ./configure && make
 
-    # Upload the binary if we're on the main branch
+    # Upload the binary if we're on the master branch
     - name: Upload artifact
-      if: ${{ github.ref == 'refs/heads/main' }}
+      if: ${{ github.ref == 'refs/heads/master' }}
       uses: actions/upload-artifact@v4
       with:
         name: gzinject-${{ matrix.name }}
